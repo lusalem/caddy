@@ -1,29 +1,31 @@
 version: '2'
 
 services:
-  v2ray:
+     ray:
     image: hulisang/v2ray_v3:go_pay
     restart: always
     network_mode: "host"
     environment:
-      sspanel_url: "https://xxxx"
-      key: "xxxx"
-      docker: "true"
+      sspanel_url: "https://go.sswiwi.com"
+      key: "SalemWebapi"
       speedtest: 6
-      node_id: 10
+      node_id: 0
       api_port: 2333
-      downWithPanel: 1
-      LDNS: "1.1.1.1"
+      downWithPanel: 0
+      LDNS: "localhost"
       TZ: "Asia/Shanghai"
-      MYSQLHOST: "https://bing.com"
-      MYSQLDBNAME: "demo_dbname"
-      MYSQLUSR: "demo_user"
-      MYSQLPASSWD: "demo_dbpassword"
+      MYSQLHOST: ""
+      MYSQLDBNAME: ""
+      MYSQLUSR: ""
+      MYSQLPASSWD: ""
       MYSQLPORT: 3306
       PANELTYPE: 0
       usemysql: 0
-      CF_Key: "bbbbbbbbbbbbbbbbbb"
-      CF_Email: "rico93@outlxxxxxxxxxx.com"
+      CF_Key: ""
+      CF_Email: ""
+      MUREGEX: "%suffix"
+      MUSUFFIX: "bing.com"
+      ProxyTCP: 0  
     volumes:
       - /etc/localtime:/etc/localtime:ro
     logging:
@@ -40,8 +42,8 @@ services:
 #      - CLOUDFLARE_EMAIL=xxxxxx@out.look.com
 #      - CLOUDFLARE_API_KEY=xxxxxxx
       - V2RAY_DOMAIN=xxxx.com
-      - V2RAY_PATH=/v2ray
-      - V2RAY_EMAIL=xxxx@outlook.com
+      - V2RAY_PATH=/ray
+      - V2RAY_EMAIL=lusalem@yandex.com
       - V2RAY_PORT=10550
       - V2RAY_OUTSIDE_PORT=443
       - TZ=Asia/Shanghai
@@ -49,3 +51,4 @@ services:
     volumes:
       - ./.caddy:/root/.caddy
       - ./Caddyfile:/etc/Caddyfile
+      - /etc/localtime:/etc/localtime:ro
